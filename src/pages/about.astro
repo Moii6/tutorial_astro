@@ -1,13 +1,18 @@
 ---
-
+const pageTitle = "Sobre mi";
 ---
 
 <html lang="en">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro -{pageTitle}</title>
+  </head>
 	<body>
         <a href="/">Inicio</a>
         <a href="/about/">Sobre mi</a>
         <a href="/blog">Mi Blog</a>
-		<h1>Pagina About</h1>
+		<h1>{pageTitle}</h1>
         <p>Estoy aprendiendo astro</p>
     </body>
 </html>
