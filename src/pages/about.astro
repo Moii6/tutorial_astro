@@ -1,18 +1,61 @@
 ---
 const pageTitle = "Sobre mi";
+
+const identity = {
+  firstName: "Moises",
+  country: "Mexico",
+  occupation: "Desarrollador de Software",
+  hobbies: ["anime", "programacion", "videojuegos"],
+};
+const happy = true;
+const finished = false;
+const goal = 3;
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "React",
+  "Astro",
+  "Redacción de documentos",
+];
 ---
 
 <html lang="en">
-    <head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Astro -{pageTitle}</title>
+    <title>{pageTitle}</title>
   </head>
-	<body>
-        <a href="/">Inicio</a>
-        <a href="/about/">Sobre mi</a>
-        <a href="/blog">Mi Blog</a>
-		<h1>{pageTitle}</h1>
-        <p>Estoy aprendiendo astro</p>
-    </body>
+  <body>
+    <a href="/">Inicio</a>
+    <a href="/about/">Sobre mi</a>
+    <a href="/blog">Mi Blog</a>
+    <h1>{pageTitle}</h1>
+    <p>Estoy aprendiendo astro</p>
+    <ul>
+      <li>Mi nombre es {identity.firstName}</li>
+      <li>Vivo en {identity.country} y trabajo como {identity.occupation}.</li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Dos de mis aficiones son {identity.hobbies[0]} y{" "}
+            {identity.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <p>Mis habilidades son:</p>
+    {skills.map((skill) => <li>{skill}</li>)}
+    {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+
+    {finished && <p>¡He terminado este tutorial!</p>}
+
+    {
+      goal === 3 ? (
+        <p>Mi objetivo es terminar en 3 días.</p>
+      ) : (
+        <p>Mi objetivo no son 3 días.</p>
+      )
+    }
+  </body>
 </html>
