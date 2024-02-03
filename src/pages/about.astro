@@ -1,4 +1,6 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
 const pageTitle = "Sobre mi";
 
 const identity = {
@@ -18,44 +20,35 @@ const skills = [
   "Astro",
   "Redacción de documentos",
 ];
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <a href="/">Inicio</a>
-    <a href="/about/">Sobre mi</a>
-    <a href="/blog">Mi Blog</a>
-    <h1>{pageTitle}</h1>
-    <p>Estoy aprendiendo astro</p>
-    <ul>
-      <li>Mi nombre es {identity.firstName}</li>
-      <li>Vivo en {identity.country} y trabajo como {identity.occupation}.</li>
-      {
-        identity.hobbies.length >= 2 && (
-          <li>
-            Dos de mis aficiones son {identity.hobbies[0]} y{" "}
-            {identity.hobbies[1]}
-          </li>
-        )
-      }
-    </ul>
-    <p>Mis habilidades son:</p>
-    {skills.map((skill) => <li>{skill}</li>)}
-    {happy && <p>¡Estoy feliz de aprender Astro!</p>}
-
-    {finished && <p>¡He terminado este tutorial!</p>}
-
+<BaseLayout pageTitle={pageTitle}>
+  <p>Estoy aprendiendo astro</p>
+  <ul>
+    <li>Mi nombre es {identity.firstName}</li>
+    <li>Vivo en {identity.country} y trabajo como {identity.occupation}.</li>
     {
-      goal === 3 ? (
-        <p>Mi objetivo es terminar en 3 días.</p>
-      ) : (
-        <p>Mi objetivo no son 3 días.</p>
+      identity.hobbies.length >= 2 && (
+        <li>
+          Dos de mis aficiones son {identity.hobbies[0]} y {identity.hobbies[1]}
+        </li>
       )
     }
-  </body>
-</html>
+  </ul>
+  <p>Mis habilidades son:</p>
+  {skills.map((skill) => <li class="skill">{skill}</li>)}
+  {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+
+  {finished && <p>¡He terminado este tutorial!</p>}
+
+  {
+    goal === 3 ? (
+      <p>Mi objetivo es terminar en 3 días.</p>
+    ) : (
+      <p>Mi objetivo no son 3 días.</p>
+    )
+  }
+</BaseLayout>

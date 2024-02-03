@@ -1,0 +1,28 @@
+---
+import Social from "../components/Social.astro";
+const platform = "github";
+const username = "withastro";
+const social = ["facebook", "X", "instagram"];
+---
+
+<style>
+  footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+<footer>
+  <div>
+    <p>
+      ¡Más información sobre mis proyectos en <a
+        href={`https://www.${platform}.com/${username}`}>{platform}</a
+      >!
+    </p><p>Sigueme en mis redes sociales</p>
+  </div>
+
+  <Social platform={social[0]} username="moisesGomez" />
+  <Social platform={social[1]} username="@moii" />
+  <Social platform={social[2]} username="@gomez" />
+</footer>
